@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- #######################Ex1 계산기####################### -->
+	<bean id="calculator" class="com.javalec.cal.Calculater"></bean>
+
+	<bean id="myCalculator" class="com.javalec.cal.MyCalculater">
+		<property name="cal">
+			<ref bean="calculator" />
+		</property>
+		<property name="num1" value="10"></property>
+		<property name="num2" value="5"></property>
+	</bean>
+	<!-- #######################Ex1 계산기####################### -->
+	
+	<!-- #######################Ex2 BMI계산기####################### -->
+	<bean id="bmiCal" class="com.javalec.bmi.BMICalculator">
+		<property name="lowWeight">
+			<value>18.5</value>
+		</property>
+		<property name="normal">
+			<value>23</value>
+		</property>
+		<property name="overWeight">
+			<value>25</value>
+		</property>
+		<property name="obesity">
+			<value>30</value>
+		</property>
+	</bean>
+
+	<bean id="myInfo" class="com.javalec.bmi.MyInfo">
+		<property name="name">
+			<value>홍길동</value>
+		</property>
+		<property name="height">
+			<value>175</value>
+		</property>
+		<property name="weight">
+			<value>75</value>
+		</property>
+		<property name="hobbys">
+			<list>
+				<value>코딩</value>
+				<value>운동</value>
+				<value>게임</value>
+			</list>
+		</property>
+		<property name="bmiCalculator">
+			<ref bean="bmiCal" />
+		</property>
+	</bean>
+	<!-- #######################Ex2 BMI계산기####################### -->
+	
+	<!-- #######################Ex3 연필####################### -->
+	<bean id="pencil" class="com.javalec.pencil.Pencil6BwithEraser"></bean>
+	<!-- #######################Ex3 연필####################### -->
+	
+	
+	<!-- #######################Ex4 javaDI####################### -->
+	
+	
+	<!-- #######################Ex5 Student####################### -->
+	<bean id="student2" class="com.javalec.student.Student">
+		<constructor-arg>
+			<value>박형진</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>18</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>2</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>1</value>
+		</constructor-arg>
+	</bean>
+	<bean id="studentInfo" class="com.javalec.student.StudentInfo">
+		<constructor-arg>
+			<ref bean="student2"/>
+		</constructor-arg>
+	</bean>
+	<!-- #######################Ex5 Student####################### -->
+</beans>
